@@ -23,12 +23,16 @@ function handleForm(e){
     e.preventDefault()
 
     const newCookie = {};
-    
+
     inputs.forEach(input => {
         const nameAttribute = input.getAttribute("name")
         newCookie[nameAttribute]= input.value;
 
     })
+    newCookie.expires = new Date (new Date().getTime()+ 7 * 24 * 60 * 60 * 1000)
 
-    console.log(newCookie);
+createCookie(newCookie)
 }
+
+
+function createCookie(newCookie)
