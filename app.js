@@ -33,6 +33,7 @@ function handleForm(e) {
 
     // console.log(newCookie);
     createCookie(newCookie)
+    cookieForm.reset();
 }
 
 
