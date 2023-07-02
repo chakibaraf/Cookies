@@ -76,3 +76,18 @@ form button {
     margin-top:20px;
     text-align:center;
 }
+
+.toasts-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.toast {
+    font-size: 17px;
+    color: #ffefba;
+    padding: 10px;
+    margin: 10px 0;
+    min-width: 150px;
+    border-radius: 2px;
+}

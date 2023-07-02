@@ -39,7 +39,7 @@ function handleForm(e) {
 function createCookie(newCookie) {
 
     if (doesCookieExist(newCookie.name)) {
-        createToast({ name: newCookie.name, state: "modifié", color: "organised" })
+        createToast({ name: newCookie.name, state: "modifié", color: "orange" })
     }
     else {
         createToast({ name: newCookie.name, state: "crée", color: "green" })
@@ -65,4 +65,9 @@ function createToast({name,state,color}){
 
     tostInfo.textContent = `Cookie ${name} ${state}`;
     tostInfo.style.background = color;
+    toastContainer.appendChild(tostInfo);
+
+    setTimeout(()=> {
+        tostInfo.remove()
+    },2500)
 }
