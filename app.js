@@ -82,6 +82,8 @@ displayCookieBtn.addEventListener("click", displayCookies)
 
  let lock = false
 function displayCookies() {
+    console.log(cookiesList.children);
+   if(cookiesList.children.length) cookiesList.textContent = "";
     const cookies = document.cookie.replace(/\s/g, "").split(";").reverse()
     console.log(cookies);
 
@@ -123,6 +125,8 @@ function createElements(cookies){
             document.cookie = `${formatCookie[0]}=; expires=${new Date(0)}`
             e.target.parentElement.remove()
         })
+
+        cookiesList.appendChild(listItem);
 
     })
 }
