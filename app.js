@@ -60,7 +60,7 @@ function doesCookieExist(name) {
 }
 
 const toastContainer = document.querySelector(".toasts-container")
-function createToast({name,state,color}){
+function createToast({ name, state, color }) {
     const tostInfo = document.createElement("p");
     tostInfo.className = "toast";
 
@@ -68,7 +68,55 @@ function createToast({name,state,color}){
     tostInfo.style.background = color;
     toastContainer.appendChild(tostInfo);
 
-    setTimeout(()=> {
+    setTimeout(() => {
         tostInfo.remove()
-    },2500)
+    }, 2500)
+}
+
+
+const cookiesList = document.querySelector(".cookies-list");
+const displayCookieBtn = document.querySelector(".display-cookie-btn");
+const infoTxt = document.querySelector(".info-txt");
+
+displayCookieBtn.addEventListener("click", displayCookies)
+
+ let lock = false
+function displayCookies() {
+    const cookies = document.cookie.replace(/\s/g, "").split(";").reverse()
+    console.log(cookies);
+
+
+    if (!cookies[0]) {
+     if(lock) return
+
+        lock = true
+        infoTxt.textContent = " pas de cookies a afficher, créer un"
+
+        setTimeout(() => {
+            infoTxt.textContent = "";
+        lock = false;
+        }, 1500)
+        return;
+    }
+    createElements(cookies)
+}
+
+function createElements(cookies){
+    console.log(cookies);
+    cookies.forEach(cookie =>{
+        const formatCookie = cookie.split("=");
+        console.log(formatCookie);
+        const listItem = document.createElement("li");
+        const name = decodeURIComponent(formatCookie[0])
+        const itemContent = `
+        <p>
+        <span>Nom</span> : ${name}
+        </p>
+        <p>
+
+        <span>Valeur</span> : ${decodeURIComponent(formatCookie[1])}
+        </p>
+        <button>X</button>
+        `
+    })
 }
